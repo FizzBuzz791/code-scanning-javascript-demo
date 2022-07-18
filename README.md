@@ -15,3 +15,5 @@ Finds nothing with `snyk code test` is run on the CLI.
 Finds the "unused variable" error on line 70.
 
 ## GitLab
+
+Finds the "unsafe regex" error on line 87 (most important of the 3 issues with that line).

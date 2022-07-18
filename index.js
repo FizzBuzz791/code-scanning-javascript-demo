@@ -128,12 +128,19 @@ class TestClass {
 class AnotherClass {
   // This should trigger the "use of http is insecure" security hotspot.
   healthCheckUrl = "http://some-insecure-health-check.com/health";
+  credentials = {
+    // This is a fake token from https://token.dev/ that should trigger a secret scanning issue.
+    token:
+      "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZha2UgVXNlciIsImFkbWluIjp0cnVlLCJpYXQiOjE2NTgxMzMzMzAsImV4cCI6MTY1ODEzNjkzMH0.bSUQsHa5_Q24KewFKNZDjuBJjdRhM_IRee2LqnRkS9I",
+  };
 
   // This should trigger the empty constructor warning.
   constructor() {}
 
   performHealthCheck() {
-    return fetch(this.healthCheckUrl).then((result) => result.ok);
+    return fetch(this.healthCheckUrl, {
+      headers: { Authorization: this.credentials.token },
+    }).then((result) => result.ok);
   }
 }
 
