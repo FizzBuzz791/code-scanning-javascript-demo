@@ -342,6 +342,15 @@ class TestClass {
     this.arg9 = arg9;
     this.arg10 = arg10;
   }
+
+  /** @deprecated use getArg1 */
+  getArg1Unsafe() {
+    return this.arg1;
+  }
+
+  getArg1() {
+    return this.arg1.trim();
+  }
 }
 
 test("large constructor", (t) => {
