@@ -141,6 +141,21 @@ const temp = new TestClass(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 // TODO: This should trigger a TODO warning. Also, not sure why this isn't triggering the deprecated warning?
 // This should trigger the deprecation warning.
-temp.getArg1Unsafe();
+console.log("Arg 1 Unsafe: " + temp.getArg1Unsafe());
 // This should trigger the void operator warning.
 void temp.getValueOfArg7();
+
+// "Exercising" all the other functions to make sure they're being analysed/scanned.
+temp.incrementArg2(5);
+temp.convertArg3ToString();
+temp.generateAComplexObject();
+temp.calcArg9();
+temp.cleanArg10();
+console.log("Is URL: " + temp.isUrl("http://some-insecure-url.com/"));
+console.log("Process: " + temp.processSomething("myValue"));
+console.log("First Arg: " + temp.getFirstArg());
+console.log("Ratio: " + temp.getRatio());
+console.log("Do Something: " + temp.doSomething());
+
+const anotherTemp = new AnotherClass();
+console.log("Health Check: " + anotherTemp.performHealthCheck());
