@@ -328,32 +328,3 @@ test("do not extract invalid tar", function (t) {
       });
     });
 });
-
-class TestClass {
-  constructor(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
-    this.arg1 = arg1;
-    this.arg2 = arg2;
-    this.arg3 = arg3;
-    this.arg4 = arg4;
-    this.arg5 = arg5;
-    this.arg6 = arg6;
-    this.arg7 = arg7;
-    this.arg8 = arg8;
-    this.arg9 = arg9;
-    this.arg10 = arg10;
-  }
-
-  /** @deprecated use getArg1 */
-  getArg1Unsafe() {
-    return this.arg1;
-  }
-
-  getArg1() {
-    return this.arg1.trim();
-  }
-}
-
-test("large constructor", (t) => {
-  const tempClass = new TestClass(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-  t.assert(tempClass.arg1 === 1);
-});
