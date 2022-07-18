@@ -6,7 +6,7 @@
   "keywords": [],
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Warn: no tests defined\" && exit 0"
   },
   "main": "index.js",
   "author": "Trent Jones"
