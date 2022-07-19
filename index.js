@@ -144,8 +144,9 @@ class AnotherClass {
   }
 
   performHealthCheckFallback() {
-    const username = "fakeUser";
-    const password = "fakePassword123";
+    // This should trigger a secret scanning issue.
+    const username = "fakeAWSUser";
+    const password = "AKIA123456789FAKE123";
     return fetch(this.healthCheckUrl, {
       headers: { Authorization: "Basic " + btoa(`${username}:${password}`) },
     }).then((result) => result.ok);
