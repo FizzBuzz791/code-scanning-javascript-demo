@@ -142,6 +142,14 @@ class AnotherClass {
       headers: { Authorization: this.credentials.token },
     }).then((result) => result.ok);
   }
+
+  performHealthCheckFallback() {
+    const username = "fakeUser";
+    const password = "fakePassword123";
+    return fetch(this.healthCheckUrl, {
+      headers: { Authorization: "Basic " + btoa(`${username}:${password}`) },
+    }).then((result) => result.ok);
+  }
 }
 
 const temp = new TestClass(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -166,3 +174,4 @@ console.log("Do Something: " + temp.doSomething());
 
 const anotherTemp = new AnotherClass();
 console.log("Health Check: " + anotherTemp.performHealthCheck());
+console.log("Healt Check Alt: " + anotherTemp.performHealthCheckFallback());
